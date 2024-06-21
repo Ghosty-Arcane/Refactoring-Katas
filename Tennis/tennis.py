@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-tennisScore = {
+tennisScore: dict[int,str] = {
     0: 'Love',
     1: 'Fifteen',
     2: 'Thirty',
@@ -10,13 +10,13 @@ tennisScore = {
 class TennisGameDefactored1:
 
     def __init__(self, player1Name: str, player2Name: str):
-        self.player1Name = player1Name
-        self.player2Name = player2Name
-        self.p1Points = 0
-        self.p2Points = 0
+        self.player1Name: str = player1Name
+        self.player2Name: str = player2Name
+        self.p1Points: int = 0
+        self.p2Points: int = 0
         return
         
-    def won_point(self, playerName) ->None:
+    def won_point(self, playerName: str) ->None:
         if playerName == self.player1Name:
             self.p1Points += 1
         else:
@@ -25,7 +25,7 @@ class TennisGameDefactored1:
     
     def score(self) ->str:
         result = ''
-        if self.p1Points > 3 or self.p2Points > 3:                      ## Endgame
+        if self.p1Points >= 4 or self.p2Points >= 4:                      ## Endgame
             minusResult = self.p1Points-self.p2Points
             if minusResult == 0:
                 result = 'Deuce'
@@ -33,15 +33,14 @@ class TennisGameDefactored1:
                 result = f'Advantage {self.player1Name}'
             elif minusResult == -1:
                 result = f'Advantage {self.player2Name}'
-            elif minusResult > 1:
+            elif minusResult >= 2:
                 result = f'Win for {self.player1Name}'
             else:
                 result = f'Win for {self.player2Name}'
 
-        elif self.p1Points == self.p2Points:                            ## Tie game prior to endgame
+        elif self.p1Points == self.p2Points:
             result = f'{tennisScore[self.p1Points]}-All'
-
-        else:                                                           ## Early game, no tie
+        else:
             result = f'{tennisScore[self.p1Points]}-{tennisScore[self.p2Points]}'
         return result
 
@@ -59,6 +58,14 @@ class TennisGameDefactored2:
         else:
             self.SetP2Score(1)
     
+    def SetP1Score(self, number):
+        for _ in range(number):
+            self.p1Points +=1
+            
+    def SetP2Score(self, number):
+        for _ in range(number):
+            self.p2Points +=1
+    
     def score(self):
         result = ''
         P1res = ''
@@ -73,27 +80,18 @@ class TennisGameDefactored2:
         elif P1res == P2res:
             result = f'{P1res}-All'
         else:
-            result = P1res + "-" + P2res
+            result = f'{P1res}-{P2res}'
         
         if self.p1Points > self.p2Points and self.p2Points >= 3:
-            result = "Advantage " + self.player1Name
+            result = f'Advantage {self.player1Name}'
+        elif self.p2Points > self.p1Points and self.p1Points >= 3:
+            result = f'Advantage {self.player2Name}'
         
-        if (self.p2Points > self.p1Points and self.p1Points >= 3):
-            result = "Advantage " + self.player2Name
-        
-        if (self.p1Points>=4 and (self.p1Points-self.p2Points)>=2):
-            result = "Win for " + self.player1Name
-        if (self.p2Points>=4 and (self.p2Points-self.p1Points)>=2):
-            result = "Win for " + self.player2Name
+        if self.p1Points >= 4 and (self.p1Points - self.p2Points) >= 2:
+            result = f'Win for {self.player1Name}'
+        if self.p2Points >=4 and (self.p2Points - self.p1Points) >= 2:
+            result = f'Win for {self.player2Name}'
         return result
-    
-    def SetP1Score(self, number):
-        for _ in range(number):
-            self.p1Points +=1
-            
-    def SetP2Score(self, number):
-        for _ in range(number):
-            self.p2Points +=1
             
     
 class TennisGameDefactored3:
