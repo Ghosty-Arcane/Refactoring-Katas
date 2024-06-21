@@ -26,18 +26,18 @@ class TennisGameDefactored1:
         tempScore = 0
         if self.p1Points == self.p2Points and self.p1Points < 4:
             result = f'{tennisScore[self.p1Points]}-All'
-        elif self.p1Points == self.p2Points:
-            result = 'Deuce'
-        elif (self.p1Points>=4 or self.p2Points>=4):
+        elif self.p1Points > 3 or self.p2Points > 3:
             minusResult = self.p1Points-self.p2Points
-            if (minusResult==1):
-                result ="Advantage " + self.player1Name
+            if minusResult == 0:
+                result = 'Deuce'
+            elif minusResult == 1:
+                result = f'Advantage {self.player1Name}'
             elif (minusResult ==-1):
-                result ="Advantage " + self.player2Name
+                result = f'Advantage {self.player2Name}'
             elif (minusResult>=2):
-                result = "Win for " + self.player1Name
+                result = f'Win for {self.player1Name}'
             else:
-                result ="Win for " + self.player2Name
+                result = f'Win for {self.player2Name}'
         else:
             for i in range(1,3):
                 if (i==1):
