@@ -55,9 +55,9 @@ class TennisGameDefactored2:
         
     def won_point(self, playerName):
         if playerName == self.player1Name:
-            self.P1Score()
+            self.SetP1Score(1)
         else:
-            self.P2Score()
+            self.SetP2Score(1)
     
     def score(self):
         result = ""
@@ -132,20 +132,15 @@ class TennisGameDefactored2:
         return result
     
     def SetP1Score(self, number):
-        for i in range(number):
-            self.P1Score()
+        for _ in range(number):
+            self.p1points +=1
+            
     
     def SetP2Score(self, number):
-        for i in range(number):
-            self.P2Score()
+        for _ in range(number):
+            self.p2points +=1
+            
     
-    def P1Score(self):
-        self.p1points +=1
-    
-    
-    def P2Score(self):
-        self.p2points +=1
-        
 class TennisGameDefactored3:
     def __init__(self, player1Name, player2Name):
         self.p1N = player1Name
