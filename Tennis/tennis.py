@@ -14,19 +14,18 @@ class TennisGameDefactored1:
         self.player2Name = player2Name
         self.p1Points = 0
         self.p2Points = 0
+        return
         
-    def won_point(self, playerName):
+    def won_point(self, playerName) ->None:
         if playerName == self.player1Name:
             self.p1Points += 1
         else:
             self.p2Points += 1
+        return
     
-    def score(self):
+    def score(self) ->str:
         result = ''
-        tempScore = 0
-        if self.p1Points == self.p2Points and self.p1Points < 4:
-            result = f'{tennisScore[self.p1Points]}-All'
-        elif self.p1Points > 3 or self.p2Points > 3:
+        if self.p1Points > 3 or self.p2Points > 3:                      ## Endgame
             minusResult = self.p1Points-self.p2Points
             if minusResult == 0:
                 result = 'Deuce'
@@ -38,19 +37,12 @@ class TennisGameDefactored1:
                 result = f'Win for {self.player1Name}'
             else:
                 result = f'Win for {self.player2Name}'
-        else:
-            for i in range(1,3):
-                if (i==1):
-                    tempScore = self.p1Points
-                else:
-                    result+="-"
-                    tempScore = self.p2Points
-                result += {
-                    0 : "Love",
-                    1 : "Fifteen",
-                    2 : "Thirty",
-                    3 : "Forty",
-                }[tempScore]
+
+        elif self.p1Points == self.p2Points:                            ## Tie game prior to endgame
+            result = f'{tennisScore[self.p1Points]}-All'
+
+        else:                                                           ## Early game, no tie
+            result = f'{tennisScore[self.p1Points]}-{tennisScore[self.p2Points]}'
         return result
 
 
