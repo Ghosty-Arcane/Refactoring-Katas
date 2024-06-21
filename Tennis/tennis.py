@@ -1,31 +1,35 @@
 # -*- coding: utf-8 -*-
 
+tennisScore = {
+    0: 'Love',
+    1: 'Fifteen',
+    2: 'Thirty',
+    3: 'Forty'
+}
+
 class TennisGameDefactored1:
 
-    def __init__(self, player1Name, player2Name):
+    def __init__(self, player1Name: str, player2Name: str):
         self.player1Name = player1Name
         self.player2Name = player2Name
-        self.p1points = 0
-        self.p2points = 0
+        self.p1Points = 0
+        self.p2Points = 0
         
     def won_point(self, playerName):
         if playerName == self.player1Name:
-            self.p1points += 1
+            self.p1Points += 1
         else:
-            self.p2points += 1
+            self.p2Points += 1
     
     def score(self):
-        result = ""
-        tempScore=0
-        if (self.p1points==self.p2points):
-            result = {
-                0 : "Love-All",
-                1 : "Fifteen-All",
-                2 : "Thirty-All",
-                3 : "Forty-All",
-            }.get(self.p1points, "Deuce")
-        elif (self.p1points>=4 or self.p2points>=4):
-            minusResult = self.p1points-self.p2points
+        result = ''
+        tempScore = 0
+        if self.p1Points == self.p2Points and self.p1Points < 4:
+            result = f'{tennisScore[self.p1Points]}-All'
+        elif self.p1Points == self.p2Points:
+            result = 'Deuce'
+        elif (self.p1Points>=4 or self.p2Points>=4):
+            minusResult = self.p1Points-self.p2Points
             if (minusResult==1):
                 result ="Advantage " + self.player1Name
             elif (minusResult ==-1):
@@ -37,10 +41,10 @@ class TennisGameDefactored1:
         else:
             for i in range(1,3):
                 if (i==1):
-                    tempScore = self.p1points
+                    tempScore = self.p1Points
                 else:
                     result+="-"
-                    tempScore = self.p2points
+                    tempScore = self.p2Points
                 result += {
                     0 : "Love",
                     1 : "Fifteen",
