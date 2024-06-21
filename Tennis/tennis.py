@@ -67,7 +67,7 @@ class TennisGameDefactored2:
             P1res = tennisScore[self.p1Points]
         if self.p2Points < 4:
             P2res = tennisScore[self.p2Points]
-            
+
         if P1res == P2res and P1res == '':
             result = 'Deuce'
         elif P1res == P2res:
@@ -75,15 +75,15 @@ class TennisGameDefactored2:
         else:
             result = P1res + "-" + P2res
         
-        if (self.p1Points > self.p2Points and self.p2Points >= 3):
+        if self.p1Points > self.p2Points and self.p2Points >= 3:
             result = "Advantage " + self.player1Name
         
         if (self.p2Points > self.p1Points and self.p1Points >= 3):
             result = "Advantage " + self.player2Name
         
-        if (self.p1Points>=4 and self.p2Points>=0 and (self.p1Points-self.p2Points)>=2):
+        if (self.p1Points>=4 and (self.p1Points-self.p2Points)>=2):
             result = "Win for " + self.player1Name
-        if (self.p2Points>=4 and self.p1Points>=0 and (self.p2Points-self.p1Points)>=2):
+        if (self.p2Points>=4 and (self.p2Points-self.p1Points)>=2):
             result = "Win for " + self.player2Name
         return result
     
