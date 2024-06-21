@@ -31,9 +31,9 @@ class TennisGameDefactored1:
                 result = 'Deuce'
             elif minusResult == 1:
                 result = f'Advantage {self.player1Name}'
-            elif (minusResult ==-1):
+            elif minusResult == -1:
                 result = f'Advantage {self.player2Name}'
-            elif (minusResult>=2):
+            elif minusResult > 1:
                 result = f'Win for {self.player1Name}'
             else:
                 result = f'Win for {self.player2Name}'
@@ -171,4 +171,4 @@ class TennisGameDefactored3:
             return "Advantage " + s if ((self.p1-self.p2)*(self.p1-self.p2) == 1) else "Win for " + s
 
 # NOTE: You must change this to point at the one of the three examples that you're working on!
-TennisGame = TennisGameDefactored1
+TennisGame = TennisGameDefactored2
