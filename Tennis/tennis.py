@@ -61,32 +61,18 @@ class TennisGameDefactored2:
     
     def score(self):
         result = ''
-        if self.p1Points == self.p2Points and self.p1Points < 4:
-            result = f'{tennisScore[self.p1Points]}-All'
-        elif self.p1Points == self.p2Points and self.p1Points >= 4:
+        P1res = ''
+        P2res = ''
+        if self.p1Points < 4:
+            P1res = tennisScore[self.p1Points]
+        if self.p2Points < 4:
+            P2res = tennisScore[self.p2Points]
+
+        if P1res == P2res and P1res == '':
             result = 'Deuce'
-        
-        P1res = ""
-        P2res = ""
-        if (self.p1Points > 0 and self.p2Points==0):
-            if (self.p1Points==1):
-                P1res = "Fifteen"
-            if (self.p1Points==2):
-                P1res = "Thirty"
-            if (self.p1Points==3):
-                P1res = "Forty"
-            
-            P2res = "Love"
-            result = P1res + "-" + P2res
-        if (self.p2Points > 0 and self.p1Points==0):
-            if (self.p2Points==1):
-                P2res = "Fifteen"
-            if (self.p2Points==2):
-                P2res = "Thirty"
-            if (self.p2Points==3):
-                P2res = "Forty"
-            
-            P1res = "Love"
+        elif P1res == P2res:
+            result = f'{P1res}-All'
+        else:
             result = P1res + "-" + P2res
         
         
