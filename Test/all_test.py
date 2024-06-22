@@ -102,10 +102,10 @@ class TestYahtzee:
 	def test_four_of_a_knd(self):
 		assert 12 == Yahtzee.four_of_a_kind(3,3,3,3,5)
 		assert 20 == Yahtzee.four_of_a_kind(5,5,5,4,5)
-		assert 0 == Yahtzee.three_of_a_kind(3,3,3,3,3)
-		assert 12 == Yahtzee.four_of_a_kind(3,3,3,3,5)
-		assert 20 == Yahtzee.four_of_a_kind(5,5,5,4,5)
-		assert 0 == Yahtzee.three_of_a_kind(3,3,3,3,3)
+		assert 0 == Yahtzee.four_of_a_kind(3,3,3,3,3)
+		assert 12 == YahtzeeScore.Score(Rule.FOUR_KIND, [3,3,3,3,5])
+		assert 20 == YahtzeeScore.Score(Rule.FOUR_KIND, [5,5,5,4,5])
+		assert 0 == YahtzeeScore.Score(Rule.FOUR_KIND, [3,3,3,3,3])
 
 	def test_smallStraight(self):
 		assert 15 == Yahtzee.smallStraight(1,2,3,4,5)

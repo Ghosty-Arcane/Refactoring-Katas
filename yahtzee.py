@@ -12,6 +12,7 @@ class Rule(Enum):
     PAIR = auto()
     TWO_PAIR = auto()
     THREE_KIND = auto()
+    FOUR_KIND = auto()
     SMALL_STRAIGHT = auto()
     LARGE_STRAIGHT = auto()
     FULL_HOUSE = auto()
@@ -96,6 +97,8 @@ class YahtzeeScore:
                 return YahtzeeScore.TwoPair(dice)
             case Rule.THREE_KIND:
                 return YahtzeeScore.Of_A_Kind(3, dice)
+            case Rule.FOUR_KIND:
+                return YahtzeeScore.Of_A_Kind(4, dice)
             case _:
                 return 0
     
