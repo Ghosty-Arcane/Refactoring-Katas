@@ -1,6 +1,6 @@
 from enum import Enum, auto
 
-class Rules(Enum):
+class Rule(Enum):
     CHANCE = auto()
     YAHTZEE = auto()
     ONES = auto()
@@ -73,7 +73,11 @@ class YahtzeeScore:
     
     @staticmethod
     def Score(selection, dice: list[int]) ->int:
-        return 0
+        match selection:
+            case Rule.CHANCE:
+                return YahtzeeScore.chance(dice)
+            case _:
+                return 0
     
 
 class Yahtzee:

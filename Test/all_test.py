@@ -3,7 +3,7 @@
 import pytest
 from tennis import TennisGame
 from Test.tennis_unittest import test_cases, play_game
-from yahtzee import Yahtzee
+from yahtzee import Rule, Yahtzee, YahtzeeScore
 
 class TestTennis:
 
@@ -17,6 +17,8 @@ class TestYahtzee:
 	def test_chance_scores_sum_of_all_dice(self):
 		assert 15 == Yahtzee.chance(2,3,4,5,1)
 		assert 16 == Yahtzee.chance(3,3,4,5,1)
+		assert 15 == YahtzeeScore.Score(Rule.CHANCE, [2,3,4,5,1])
+		assert 16 == YahtzeeScore.Score(Rule.CHANCE, [3,3,4,5,1])
 
 	def test_yahtzee_scores_50(self):
 		assert 50 == Yahtzee.yahtzee([4,4,4,4,4])
