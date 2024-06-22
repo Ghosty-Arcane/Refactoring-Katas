@@ -14,6 +14,9 @@ class TestTennis:
 
 
 class TestYahtzee:
+	def test_invalid_Score_rule(self):
+		assert 0 == YahtzeeScore.Score('badRule', [1, 2, 3, 4, 5])
+
 	def test_chance_scores_sum_of_all_dice(self):
 		assert 15 == Yahtzee.chance(2,3,4,5,1)
 		assert 16 == Yahtzee.chance(3,3,4,5,1)
