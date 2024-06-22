@@ -1,18 +1,25 @@
 class YahtzeeScore:
     @staticmethod
-    def chance(dice: list[int,int,int,int,int]) ->int:
+    def chance(dice: list[int]) ->int:
         total = sum(dice)
         return total
     
     @staticmethod
-    def yahtzee(dice: list[int,int,int,int,int]) ->int:
+    def yahtzee(dice: list[int]) ->int:
         if len(dice) == dice.count(dice[0]):
             return 50
         return 0
     
     @staticmethod
-    def count(count: int, dice: list[int,int,int,int,int]) ->int:
+    def count(count: int, dice: list[int]) ->int:
         return dice.count(count) * count
+    
+    def score_pair(dice: list[int]) ->int:
+        score = 0
+        for i in dice:
+            if dice.count(i) == 2:
+                score = max(i*2, score)
+        return score
 
 
 class Yahtzee:
@@ -22,7 +29,7 @@ class Yahtzee:
         return YahtzeeScore.chance([d1, d2, d3, d4, d5])
 
     @staticmethod
-    def yahtzee(dice: list[int,int,int,int,int]) ->int:
+    def yahtzee(dice: list[int]) ->int:
         return YahtzeeScore.yahtzee(dice)
     
     @staticmethod
@@ -57,17 +64,7 @@ class Yahtzee:
     
     @staticmethod
     def score_pair( d1,  d2,  d3,  d4,  d5):
-        counts = [0]*6
-        counts[d1-1] += 1
-        counts[d2-1] += 1
-        counts[d3-1] += 1
-        counts[d4-1] += 1
-        counts[d5-1] += 1
-        at = 0
-        for at in range(6):
-            if (counts[6-at-1] == 2):
-                return (6-at)*2
-        return 0
+        return YahtzeeScore.score_pair([d1, d2, d3, d4, d5])
     
     @staticmethod
     def two_pair( d1,  d2,  d3,  d4,  d5):
