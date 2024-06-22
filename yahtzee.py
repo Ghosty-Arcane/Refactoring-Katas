@@ -48,15 +48,9 @@ class Yahtzee:
     
     def fours(self) ->int:
         return YahtzeeScore.count(4, self.dice)
-    
 
     def fives(self):
-        s = 0
-        i = 0
-        for i in range(len(self.dice)): 
-            if (self.dice[i] == 5):
-                s = s + 5
-        return s
+        return YahtzeeScore.count(5, self.dice)
     
 
     def sixes(self):
