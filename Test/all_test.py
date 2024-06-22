@@ -2,7 +2,7 @@
 
 import pytest
 from tennis import TennisGame
-from tennis_unittest import test_cases, play_game
+from Test.tennis_unittest import test_cases, play_game
 from yahtzee import Yahtzee
 
 class TestTennis:
