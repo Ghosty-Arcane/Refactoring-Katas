@@ -27,6 +27,9 @@ class TestYahtzee:
 		assert 50 == Yahtzee.yahtzee([4,4,4,4,4])
 		assert 50 == Yahtzee.yahtzee([6,6,6,6,6])
 		assert 0 == Yahtzee.yahtzee([6,6,6,6,3])
+		assert 50 == YahtzeeScore.Score(Rule.YAHTZEE, [4,4,4,4,4])
+		assert 50 == YahtzeeScore.Score(Rule.YAHTZEE, [6,6,6,6,6])
+		assert 0 == YahtzeeScore.Score(Rule.YAHTZEE, [6,6,6,6,3])
 
 	def test_1s(self):
 		assert 1 == Yahtzee.ones(1,2,3,4,5)

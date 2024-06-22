@@ -19,22 +19,22 @@ class Rule(Enum):
 
 class YahtzeeScore:
     @staticmethod
-    def chance(dice: list[int]) ->int:
+    def Chance(dice: list[int]) ->int:
         total = sum(dice)
         return total
     
     @staticmethod
-    def yahtzee(dice: list[int]) ->int:
+    def Yahtzee(dice: list[int]) ->int:
         if len(dice) == dice.count(dice[0]):
             return 50
         return 0
     
     @staticmethod
-    def count(count: int, dice: list[int]) ->int:
+    def Count(count: int, dice: list[int]) ->int:
         return dice.count(count) * count
     
     @staticmethod
-    def of_a_kind(count: int, dice: list[int]) ->int:
+    def Of_A_Kind(count: int, dice: list[int]) ->int:
         score = 0
         for i in dice:
             if dice.count(i) == count:
@@ -42,7 +42,7 @@ class YahtzeeScore:
         return score
 
     @staticmethod
-    def two_pair(dice: list[int]) ->int:
+    def TwoPair(dice: list[int]) ->int:
         pair = []
         for i in dice:
             if i in pair:
@@ -54,7 +54,7 @@ class YahtzeeScore:
         return 0
     
     @staticmethod
-    def straight(start: int, dice: list[int]) ->bool:
+    def Straight(start: int, dice: list[int]) ->bool:
         diceList = sorted(dice)
         compare = start
         for i in diceList:
@@ -64,9 +64,9 @@ class YahtzeeScore:
         return True
     
     @staticmethod
-    def fullHouse(dice: list[int]) ->int:
-        pair = YahtzeeScore.of_a_kind(2, dice)
-        trio = YahtzeeScore.of_a_kind(3, dice)
+    def FullHouse(dice: list[int]) ->int:
+        pair = YahtzeeScore.Of_A_Kind(2, dice)
+        trio = YahtzeeScore.Of_A_Kind(3, dice)
         if pair != 0 and trio != 0:
             return pair + trio
         return 0
@@ -75,7 +75,11 @@ class YahtzeeScore:
     def Score(selection, dice: list[int]) ->int:
         match selection:
             case Rule.CHANCE:
-                return YahtzeeScore.chance(dice)
+                return YahtzeeScore.Chance(dice)
+            case Rule.YAHTZEE:
+                return YahtzeeScore.Yahtzee(dice)
+            case Rule.ONES:
+                return YahtzeeScore.Count(1, dice)
             case _:
                 return 0
     
@@ -92,61 +96,61 @@ class Yahtzee:
 
     @staticmethod
     def chance(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
-        return YahtzeeScore.chance([d1, d2, d3, d4, d5])
+        return YahtzeeScore.Chance([d1, d2, d3, d4, d5])
 
     @staticmethod
     def yahtzee(dice: list[int]) ->int:
-        return YahtzeeScore.yahtzee(dice)
+        return YahtzeeScore.Yahtzee(dice)
     
     @staticmethod
     def ones(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
-        return YahtzeeScore.count(1, [d1, d2, d3, d4, d5])
+        return YahtzeeScore.Count(1, [d1, d2, d3, d4, d5])
 
     @staticmethod
     def twos(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
-        return YahtzeeScore.count(2, [d1, d2, d3, d4, d5])
+        return YahtzeeScore.Count(2, [d1, d2, d3, d4, d5])
     
     @staticmethod
     def threes(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
-        return YahtzeeScore.count(3, [d1, d2, d3, d4, d5])
+        return YahtzeeScore.Count(3, [d1, d2, d3, d4, d5])
     
     def fours(self) ->int:
-        return YahtzeeScore.count(4, self.dice)
+        return YahtzeeScore.Count(4, self.dice)
 
     def fives(self) ->int:
-        return YahtzeeScore.count(5, self.dice)
+        return YahtzeeScore.Count(5, self.dice)
 
     def sixes(self) ->int:
-        return YahtzeeScore.count(6, self.dice)
+        return YahtzeeScore.Count(6, self.dice)
     
     @staticmethod
     def score_pair(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
-        return YahtzeeScore.of_a_kind(2, [d1, d2, d3, d4, d5])
+        return YahtzeeScore.Of_A_Kind(2, [d1, d2, d3, d4, d5])
     
     @staticmethod
     def two_pair(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
-        return YahtzeeScore.two_pair([d1, d2, d3, d4, d5])
+        return YahtzeeScore.TwoPair([d1, d2, d3, d4, d5])
     
     @staticmethod
     def three_of_a_kind(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
-        return YahtzeeScore.of_a_kind(3, [d1, d2, d3, d4, d5])
+        return YahtzeeScore.Of_A_Kind(3, [d1, d2, d3, d4, d5])
     
     @staticmethod
     def four_of_a_kind(_1: int, _2: int, d3: int, d4: int, d5: int) ->int:
-        return YahtzeeScore.of_a_kind(4, [_1, _2, d3, d4, d5])
+        return YahtzeeScore.Of_A_Kind(4, [_1, _2, d3, d4, d5])
 
     @staticmethod
     def smallStraight(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
-        if YahtzeeScore.straight(1, [d1, d2, d3, d4, d5]):
+        if YahtzeeScore.Straight(1, [d1, d2, d3, d4, d5]):
             return 15
         return 0
 
     @staticmethod
     def largeStraight(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
-        if YahtzeeScore.straight(2, [d1, d2, d3, d4, d5]):
+        if YahtzeeScore.Straight(2, [d1, d2, d3, d4, d5]):
             return 20
         return 0
 
     @staticmethod
     def fullHouse(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
-        return YahtzeeScore.fullHouse([d1, d2, d3, d4, d5])
+        return YahtzeeScore.FullHouse([d1, d2, d3, d4, d5])
