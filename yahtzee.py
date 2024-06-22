@@ -99,6 +99,12 @@ class YahtzeeScore:
                 return YahtzeeScore.Of_A_Kind(3, dice)
             case Rule.FOUR_KIND:
                 return YahtzeeScore.Of_A_Kind(4, dice)
+            case Rule.SMALL_STRAIGHT:
+                return YahtzeeScore.Straight(1, dice)
+            case Rule.LARGE_STRAIGHT:
+                return YahtzeeScore.Straight(2, dice)
+            case Rule.FULL_HOUSE:
+                return YahtzeeScore.FullHouse(dice)
             case _:
                 return 0
     
