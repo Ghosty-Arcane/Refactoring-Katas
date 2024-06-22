@@ -90,6 +90,10 @@ class YahtzeeScore:
                 return YahtzeeScore.Count(5, dice)
             case Rule.SIXES:
                 return YahtzeeScore.Count(6, dice)
+            case Rule.PAIR:
+                return YahtzeeScore.Of_A_Kind(2, dice)
+            case Rule.TWO_PAIR:
+                return YahtzeeScore.TwoPair(dice)
             case _:
                 return 0
     
