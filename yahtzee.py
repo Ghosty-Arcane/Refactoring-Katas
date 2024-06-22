@@ -15,14 +15,6 @@ class YahtzeeScore:
         return dice.count(count) * count
     
     @staticmethod
-    def one_pair(dice: list[int]) ->int:
-        score = 0
-        for i in dice:
-            if dice.count(i) == 2:
-                score = max(i*2, score)
-        return score
-    
-    @staticmethod
     def two_pair(dice: list[int]) ->int:
         pair = []
         for i in dice:
