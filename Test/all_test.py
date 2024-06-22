@@ -15,20 +15,16 @@ class TestTennis:
 
 class TestYahtzee:
 	def test_chance_scores_sum_of_all_dice(self):
-		expected = 15
-		actual = Yahtzee.chance(2,3,4,5,1)
-		assert expected == actual
+		assert 15 == Yahtzee.chance(2,3,4,5,1)
 		assert 16 == Yahtzee.chance(3,3,4,5,1)
 
 	def test_yahtzee_scores_50(self):
-		expected = 50
-		actual = Yahtzee.yahtzee([4,4,4,4,4])
-		assert expected == actual
+		assert 50 == Yahtzee.yahtzee([4,4,4,4,4])
 		assert 50 == Yahtzee.yahtzee([6,6,6,6,6])
 		assert 0 == Yahtzee.yahtzee([6,6,6,6,3])
 
 	def test_1s(self):
-		assert Yahtzee.ones(1,2,3,4,5) == 1
+		assert 1 == Yahtzee.ones(1,2,3,4,5)
 		assert 2 == Yahtzee.ones(1,2,1,4,5)
 		assert 0 == Yahtzee.ones(6,2,2,4,5)
 		assert 4 == Yahtzee.ones(1,2,1,1,1)
