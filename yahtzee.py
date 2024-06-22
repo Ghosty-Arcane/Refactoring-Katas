@@ -36,22 +36,18 @@ class Yahtzee:
     @staticmethod
     def threes(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
         return YahtzeeScore.count(3, [d1, d2, d3, d4, d5])
-    
 
-    def __init__(self, d1, d2, d3, d4, _5):
-        self.dice = [0]*5
-        self.dice[0] = d1
-        self.dice[1] = d2
-        self.dice[2] = d3
-        self.dice[3] = d4
-        self.dice[4] = _5
+    def __init__(self, d1: int, d2: int, d3: int, d4: int, _5: int):
+        self.dice = []
+        self.dice.append(d1)
+        self.dice.append(d2)
+        self.dice.append(d3)
+        self.dice.append(d4)
+        self.dice.append(_5)
+        return
     
-    def fours(self):
-        sum = 0
-        for at in range(5):
-            if (self.dice[at] == 4): 
-                sum += 4
-        return sum
+    def fours(self) ->int:
+        return YahtzeeScore.count(4, self.dice)
     
 
     def fives(self):
