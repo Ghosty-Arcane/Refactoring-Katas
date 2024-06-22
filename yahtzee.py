@@ -34,15 +34,28 @@ class YahtzeeScore:
             return sum(pair) *2
         return 0
     
+    staticmethod
+    def straight(start, dice: list[int]) ->bool:
+        diceList = sorted(dice)
+        compare = start
+        for i in diceList:
+            if i != compare:
+                return False
+            compare += 1
+        return True
+    
     @staticmethod
     def small_straight(dice: list[int]) ->int:
-        diceList = sorted(dice)
-        compare = 0
-        for i in diceList:
-            compare += 1
-            if i != compare:
-                return 0
-        return 15
+        if YahtzeeScore.straight(1, dice):
+            return 15
+        return 0
+    
+    @staticmethod
+    def large_straight(dice: list[int]) ->int:
+        if YahtzeeScore.straight(2, dice):
+            return 20
+        return 0
+            
 
 
 class Yahtzee:
