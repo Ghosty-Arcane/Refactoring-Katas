@@ -30,7 +30,7 @@ class Yahtzee:
         return YahtzeeScore.count(1, [d1, d2, d3, d4, d5])
 
     @staticmethod
-    def twos(d1: int, d2: int, d3: int, d4: int, d5: int):
+    def twos(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
         return YahtzeeScore.count(2, [d1, d2, d3, d4, d5])
     
     @staticmethod
