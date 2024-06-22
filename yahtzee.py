@@ -28,22 +28,10 @@ class Yahtzee:
     @staticmethod
     def ones(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
         return YahtzeeScore.count(1, [d1, d2, d3, d4, d5])
-    
 
     @staticmethod
-    def twos( d1,  d2,  d3,  d4,  d5):
-        sum = 0
-        if (d1 == 2):
-             sum += 2
-        if (d2 == 2):
-             sum += 2
-        if (d3 == 2):
-             sum += 2
-        if (d4 == 2):
-             sum += 2
-        if (d5 == 2):
-             sum += 2
-        return sum
+    def twos(d1: int, d2: int, d3: int, d4: int, d5: int):
+        return YahtzeeScore.count(2, [d1, d2, d3, d4, d5])
     
     @staticmethod
     def threes( d1,  d2,  d3,  d4,  d5):
