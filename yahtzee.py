@@ -10,6 +10,10 @@ class YahtzeeScore:
             return 50
         return 0
     
+    @staticmethod
+    def count(count: int, dice: list[int,int,int,int,int]) ->int:
+        return dice.count(count) * count
+    
 class Yahtzee:
 
     @staticmethod
@@ -17,15 +21,8 @@ class Yahtzee:
         return YahtzeeScore.chance([d1, d2, d3, d4, d5])
 
     @staticmethod
-    def yahtzee(dice):
+    def yahtzee(dice: list[int,int,int,int,int]) ->int:
         return YahtzeeScore.yahtzee(dice)
-        counts = [0]*(len(dice)+1)
-        for die in dice:
-            counts[die-1] += 1
-        for i in range(len(counts)):
-            if counts[i] == 5:
-                return 50
-        return 0
     
     @staticmethod
     def ones( d1,  d2,  d3,  d4,  d5):
