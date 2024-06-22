@@ -49,16 +49,11 @@ class Yahtzee:
     def fours(self) ->int:
         return YahtzeeScore.count(4, self.dice)
 
-    def fives(self):
+    def fives(self) ->int:
         return YahtzeeScore.count(5, self.dice)
-    
 
-    def sixes(self):
-        sum = 0
-        for at in range(len(self.dice)): 
-            if (self.dice[at] == 6):
-                sum = sum + 6
-        return sum
+    def sixes(self) ->int:
+        return YahtzeeScore.count(6, self.dice)
     
     @staticmethod
     def score_pair( d1,  d2,  d3,  d4,  d5):
