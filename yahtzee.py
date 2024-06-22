@@ -33,9 +33,25 @@ class YahtzeeScore:
         if len(pair) == 2:
             return sum(pair) *2
         return 0
+    
+    @staticmethod
+    def of_a_kind(count: int, dice: list[int]) ->int:
+        score = 0
+        for i in dice:
+            if dice.count(i) == count:
+                score = max(i*count, score)
+        return score
 
 
 class Yahtzee:
+    def __init__(self, d1: int, d2: int, d3: int, d4: int, _5: int):
+        self.dice = []
+        self.dice.append(d1)
+        self.dice.append(d2)
+        self.dice.append(d3)
+        self.dice.append(d4)
+        self.dice.append(_5)
+        return
 
     @staticmethod
     def chance(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
@@ -56,15 +72,6 @@ class Yahtzee:
     @staticmethod
     def threes(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
         return YahtzeeScore.count(3, [d1, d2, d3, d4, d5])
-
-    def __init__(self, d1: int, d2: int, d3: int, d4: int, _5: int):
-        self.dice = []
-        self.dice.append(d1)
-        self.dice.append(d2)
-        self.dice.append(d3)
-        self.dice.append(d4)
-        self.dice.append(_5)
-        return
     
     def fours(self) ->int:
         return YahtzeeScore.count(4, self.dice)
@@ -84,6 +91,19 @@ class Yahtzee:
         return YahtzeeScore.two_pair([d1, d2, d3, d4, d5])
     
     @staticmethod
+    def three_of_a_kind(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
+        t = [0]*6
+        t[d1-1] += 1
+        t[d2-1] += 1
+        t[d3-1] += 1
+        t[d4-1] += 1
+        t[d5-1] += 1
+        for i in range(6):
+            if (t[i] == 3):
+                return (i+1) * 3
+        return 0
+    
+    @staticmethod
     def four_of_a_kind( _1,  _2,  d3,  d4,  d5):
         tallies = [0]*6
         tallies[_1-1] += 1
@@ -97,18 +117,6 @@ class Yahtzee:
         return 0
     
 
-    @staticmethod
-    def three_of_a_kind( d1,  d2,  d3,  d4,  d5):
-        t = [0]*6
-        t[d1-1] += 1
-        t[d2-1] += 1
-        t[d3-1] += 1
-        t[d4-1] += 1
-        t[d5-1] += 1
-        for i in range(6):
-            if (t[i] == 3):
-                return (i+1) * 3
-        return 0
     
 
     @staticmethod
