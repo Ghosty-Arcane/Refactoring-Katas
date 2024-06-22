@@ -87,20 +87,8 @@ class Yahtzee:
         return YahtzeeScore.of_a_kind(3, [d1, d2, d3, d4, d5])
     
     @staticmethod
-    def four_of_a_kind( _1,  _2,  d3,  d4,  d5):
-        tallies = [0]*6
-        tallies[_1-1] += 1
-        tallies[_2-1] += 1
-        tallies[d3-1] += 1
-        tallies[d4-1] += 1
-        tallies[d5-1] += 1
-        for i in range(6):
-            if (tallies[i] == 4):
-                return (i+1) * 4
-        return 0
-    
-
-    
+    def four_of_a_kind(_1: int, _2: int, d3: int, d4: int, d5: int) ->int:
+        return YahtzeeScore.of_a_kind(4, [_1, _2, d3, d4, d5])
 
     @staticmethod
     def smallStraight( d1,  d2,  d3,  d4,  d5):
