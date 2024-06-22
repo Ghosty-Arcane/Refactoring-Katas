@@ -94,6 +94,8 @@ class YahtzeeScore:
                 return YahtzeeScore.Of_A_Kind(2, dice)
             case Rule.TWO_PAIR:
                 return YahtzeeScore.TwoPair(dice)
+            case Rule.THREE_KIND:
+                return YahtzeeScore.Of_A_Kind(3, dice)
             case _:
                 return 0
     

@@ -95,9 +95,9 @@ class TestYahtzee:
 		assert 9 == Yahtzee.three_of_a_kind(3,3,3,4,5)
 		assert 15 == Yahtzee.three_of_a_kind(5,3,5,4,5)
 		assert 0 == Yahtzee.three_of_a_kind(3,3,3,3,5)
-		assert 9 == Yahtzee.three_of_a_kind(3,3,3,4,5)
-		assert 15 == Yahtzee.three_of_a_kind(5,3,5,4,5)
-		assert 0 == Yahtzee.three_of_a_kind(3,3,3,3,5)
+		assert 9 == YahtzeeScore.Score(Rule.THREE_KIND, [3,3,3,4,5])
+		assert 15 == YahtzeeScore.Score(Rule.THREE_KIND, [5,3,5,4,5])
+		assert 0 == YahtzeeScore.Score(Rule.THREE_KIND, [3,3,3,3,5])
   
 	def test_four_of_a_knd(self):
 		assert 12 == Yahtzee.four_of_a_kind(3,3,3,3,5)
