@@ -15,6 +15,14 @@ class YahtzeeScore:
         return dice.count(count) * count
     
     @staticmethod
+    def of_a_kind(count: int, dice: list[int]) ->int:
+        score = 0
+        for i in dice:
+            if dice.count(i) == count:
+                score = max(i*count, score)
+        return score
+
+    @staticmethod
     def two_pair(dice: list[int]) ->int:
         pair = []
         for i in dice:
@@ -27,12 +35,14 @@ class YahtzeeScore:
         return 0
     
     @staticmethod
-    def of_a_kind(count: int, dice: list[int]) ->int:
-        score = 0
-        for i in dice:
-            if dice.count(i) == count:
-                score = max(i*count, score)
-        return score
+    def small_straight(dice: list[int]) ->int:
+        diceList = sorted(dice)
+        compare = 0
+        for i in diceList:
+            compare += 1
+            if i != compare:
+                return 0
+        return 15
 
 
 class Yahtzee:
@@ -91,20 +101,8 @@ class Yahtzee:
         return YahtzeeScore.of_a_kind(4, [_1, _2, d3, d4, d5])
 
     @staticmethod
-    def smallStraight( d1,  d2,  d3,  d4,  d5):
-        tallies = [0]*6
-        tallies[d1-1] += 1
-        tallies[d2-1] += 1
-        tallies[d3-1] += 1
-        tallies[d4-1] += 1
-        tallies[d5-1] += 1
-        if (tallies[0] == 1 and
-            tallies[1] == 1 and
-            tallies[2] == 1 and
-            tallies[3] == 1 and
-            tallies[4] == 1):
-            return 15
-        return 0
+    def smallStraight(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
+        return YahtzeeScore.small_straight([d1, d2, d3, d4, d5])
     
 
     @staticmethod
