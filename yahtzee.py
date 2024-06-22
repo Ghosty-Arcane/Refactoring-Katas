@@ -13,7 +13,8 @@ class YahtzeeScore:
     @staticmethod
     def count(count: int, dice: list[int,int,int,int,int]) ->int:
         return dice.count(count) * count
-    
+
+
 class Yahtzee:
 
     @staticmethod
@@ -25,20 +26,8 @@ class Yahtzee:
         return YahtzeeScore.yahtzee(dice)
     
     @staticmethod
-    def ones( d1,  d2,  d3,  d4,  d5):
-        sum = 0
-        if (d1 == 1):
-            sum += 1
-        if (d2 == 1):
-            sum += 1
-        if (d3 == 1):
-            sum += 1
-        if (d4 == 1):
-            sum += 1
-        if (d5 == 1): 
-            sum += 1
-
-        return sum
+    def ones(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
+        return YahtzeeScore.count(1, [d1, d2, d3, d4, d5])
     
 
     @staticmethod
