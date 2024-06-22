@@ -43,20 +43,6 @@ class YahtzeeScore:
                 return False
             compare += 1
         return True
-    
-    @staticmethod
-    def small_straight(dice: list[int]) ->int:
-        if YahtzeeScore.straight(1, dice):
-            return 15
-        return 0
-    
-    @staticmethod
-    def large_straight(dice: list[int]) ->int:
-        if YahtzeeScore.straight(2, dice):
-            return 20
-        return 0
-            
-
 
 class Yahtzee:
     def __init__(self, d1: int, d2: int, d3: int, d4: int, _5: int):
@@ -115,22 +101,13 @@ class Yahtzee:
 
     @staticmethod
     def smallStraight(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
-        return YahtzeeScore.small_straight([d1, d2, d3, d4, d5])
-    
+        if YahtzeeScore.straight(1, [d1, d2, d3, d4, d5]):
+            return 15
+        return 0
 
     @staticmethod
-    def largeStraight( d1,  d2,  d3,  d4,  d5):
-        tallies = [0]*6
-        tallies[d1-1] += 1
-        tallies[d2-1] += 1
-        tallies[d3-1] += 1
-        tallies[d4-1] += 1
-        tallies[d5-1] += 1
-        if (tallies[1] == 1 and
-            tallies[2] == 1 and
-            tallies[3] == 1 and
-            tallies[4] == 1
-            and tallies[5] == 1):
+    def largeStraight(d1: int, d2: int, d3: int, d4: int, d5: int):
+        if YahtzeeScore.straight(2, [d1, d2, d3, d4, d5]):
             return 20
         return 0
     
