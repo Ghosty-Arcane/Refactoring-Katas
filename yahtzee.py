@@ -80,6 +80,16 @@ class YahtzeeScore:
                 return YahtzeeScore.Yahtzee(dice)
             case Rule.ONES:
                 return YahtzeeScore.Count(1, dice)
+            case Rule.TWOS:
+                return YahtzeeScore.Count(2, dice)
+            case Rule.THREES:
+                return YahtzeeScore.Count(3, dice)
+            case Rule.FOURS:
+                return YahtzeeScore.Count(4, dice)
+            case Rule.FIVES:
+                return YahtzeeScore.Count(5, dice)
+            case Rule.SIXES:
+                return YahtzeeScore.Count(6, dice)
             case _:
                 return 0
     

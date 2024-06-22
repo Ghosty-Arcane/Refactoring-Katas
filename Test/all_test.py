@@ -44,8 +44,8 @@ class TestYahtzee:
 	def test_2s(self):
 		assert 4 == Yahtzee.twos(1,2,3,2,6)
 		assert 10 == Yahtzee.twos(2,2,2,2,2)
-		assert 4 == Yahtzee.twos(1,2,3,2,6)
-		assert 10 == Yahtzee.twos(2,2,2,2,2)
+		assert 4 == YahtzeeScore.Score(Rule.TWOS, [1,2,3,2,6])
+		assert 10 == YahtzeeScore.Score(Rule.TWOS, [2,2,2,2,2])
 
 	def test_threes(self):
 		assert 6 == Yahtzee.threes(1,2,3,2,3)
