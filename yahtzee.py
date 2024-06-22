@@ -34,8 +34,8 @@ class YahtzeeScore:
             return sum(pair) *2
         return 0
     
-    staticmethod
-    def straight(start, dice: list[int]) ->bool:
+    @staticmethod
+    def straight(start: int, dice: list[int]) ->bool:
         diceList = sorted(dice)
         compare = start
         for i in diceList:
@@ -43,6 +43,14 @@ class YahtzeeScore:
                 return False
             compare += 1
         return True
+    
+    @staticmethod
+    def fullHouse(dice: list[int]) ->int:
+        pair = YahtzeeScore.of_a_kind(2, dice)
+        trio = YahtzeeScore.of_a_kind(3, dice)
+        if pair != 0 and trio != 0:
+            return pair + trio
+        return 0
     
 
 class Yahtzee:
@@ -114,34 +122,5 @@ class Yahtzee:
     
 
     @staticmethod
-    def fullHouse( d1,  d2,  d3,  d4,  d5):
-        tallies = []
-        _2 = False
-        i = 0
-        _2_at = 0
-        _3 = False
-        _3_at = 0
-
-        tallies = [0]*6
-        tallies[d1-1] += 1
-        tallies[d2-1] += 1
-        tallies[d3-1] += 1
-        tallies[d4-1] += 1
-        tallies[d5-1] += 1
-
-        for i in range(6):
-            if (tallies[i] == 2): 
-                _2 = True
-                _2_at = i+1
-            
-
-        for i in range(6):
-            if (tallies[i] == 3): 
-                _3 = True
-                _3_at = i+1
-            
-
-        if (_2 and _3):
-            return _2_at * 2 + _3_at * 3
-        else:
-            return 0
+    def fullHouse(d1: int, d2: int, d3: int, d4: int, d5: int) ->int:
+        return YahtzeeScore.fullHouse([d1, d2, d3, d4, d5])
