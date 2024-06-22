@@ -15,8 +15,8 @@ class TestTennis:
 
 class TestYahtzee:
 	def test_chance_scores_sum_of_all_dice(self):
-		assert 15 == Yahtzee.chance(2,3,4,5,1)
-		assert 16 == Yahtzee.chance(3,3,4,5,1)
+		assert 15 == Yahtzee.chance([2,3,4,5,1])
+		assert 16 == Yahtzee.chance([3,3,4,5,1])
 
 	def test_yahtzee_scores_50(self):
 		assert 50 == Yahtzee.yahtzee([4,4,4,4,4])
