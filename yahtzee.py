@@ -4,6 +4,12 @@ class YahtzeeScore:
         total = sum(dice)
         return total
     
+    @staticmethod
+    def yahtzee(dice: list[int,int,int,int,int]) ->int:
+        if len(dice) == dice.count(dice[0]):
+            return 50
+        return 0
+    
 class Yahtzee:
 
     @staticmethod
@@ -12,6 +18,7 @@ class Yahtzee:
 
     @staticmethod
     def yahtzee(dice):
+        return YahtzeeScore.yahtzee(dice)
         counts = [0]*(len(dice)+1)
         for die in dice:
             counts[die-1] += 1
