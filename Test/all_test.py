@@ -111,17 +111,17 @@ class TestYahtzee:
 		assert 15 == Yahtzee.smallStraight(1,2,3,4,5)
 		assert 15 == Yahtzee.smallStraight(2,3,4,5,1)
 		assert 0 == Yahtzee.smallStraight(1,2,2,4,5)
-		#assert 15 == YahtzeeScore.Score(Rule.SMALL_STRAIGHT, [1,2,3,4,5])
-		#assert 15 == YahtzeeScore.Score(Rule.SMALL_STRAIGHT, [2,3,4,5,1])
-		#assert 0 == YahtzeeScore.Score(Rule.SMALL_STRAIGHT, [1,2,2,4,5])
+		assert 15 == YahtzeeScore.Score(Rule.SMALL_STRAIGHT, [1,2,3,4,5])
+		assert 15 == YahtzeeScore.Score(Rule.SMALL_STRAIGHT, [2,3,4,5,1])
+		assert 0 == YahtzeeScore.Score(Rule.SMALL_STRAIGHT, [1,2,2,4,5])
 
 	def test_large_straight(self):
 		assert 20 == Yahtzee.largeStraight(6,2,3,4,5)
 		assert 20 == Yahtzee.largeStraight(2,3,4,5,6)
 		assert 0 == Yahtzee.largeStraight(1,2,2,4,5)
-		#assert 20 == YahtzeeScore.Score(Rule.LARGE_STRAIGHT, [6,2,3,4,5])
-		#assert 20 == YahtzeeScore.Score(Rule.LARGE_STRAIGHT, [2,3,4,5,6])
-		#assert 0 == YahtzeeScore.Score(Rule.LARGE_STRAIGHT, [1,2,2,4,5])
+		assert 20 == YahtzeeScore.Score(Rule.LARGE_STRAIGHT, [6,2,3,4,5])
+		assert 20 == YahtzeeScore.Score(Rule.LARGE_STRAIGHT, [2,3,4,5,6])
+		assert 0 == YahtzeeScore.Score(Rule.LARGE_STRAIGHT, [1,2,2,4,5])
 
 	def test_full_house(self):
 		assert 18 == Yahtzee.fullHouse(6,2,2,2,6)
